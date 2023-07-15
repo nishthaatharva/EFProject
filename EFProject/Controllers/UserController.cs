@@ -12,8 +12,7 @@ namespace EFProject.Controllers
         private readonly IUserService _userService;   
         public UserController(IUserService userService)
         {
-            _userService = userService;    
-            
+            _userService = userService;               
         }
 
         [HttpGet]

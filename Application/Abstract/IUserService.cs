@@ -8,7 +8,7 @@ namespace EFProject.Services.UserService.Abstract
         Task<User?> GetUserById(int id);
         Task<List<User>> AddUser(User user);
         Task<List<User>?> UpdateUser(int id, User request);
-        Task<List<User>?> DeleteUser(int id);
+        Task<List<User>?> DeleteUser(int id);   
     }
 
     //interface segregation Principle

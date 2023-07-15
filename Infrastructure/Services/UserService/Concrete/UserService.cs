@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFProject.Services.UserService.Concrete
 {
-    public class UserService : IUserService
+    public class UserService : IUserService     
     {
 
         private readonly DataContext _context;
