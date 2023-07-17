@@ -20,7 +20,7 @@ namespace EFProject.Controllers
         {
             return await _userService.GetAllUsers();
         }
-        //Get userId
+
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(int id)
         {
@@ -29,7 +29,7 @@ namespace EFProject.Controllers
                 return NotFound("User not found");
             return Ok(result);
         }
-        //Post method to add user in database
+    
         [HttpPost]
         public async Task<ActionResult<List<User>>> AddUser(User user)
         {
@@ -38,7 +38,6 @@ namespace EFProject.Controllers
             return Ok(result);
         }
 
-        //Put method to update a user in database
         [HttpPut("{id}")]
         public async Task<ActionResult<List<User>>> UpdateUser(int id,User request)
         {
@@ -47,8 +46,6 @@ namespace EFProject.Controllers
                 return NotFound("User not found");
             return Ok(result);
         }
-
-        //delete a user in database
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<User>>> DeleteUser(int id)

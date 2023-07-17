@@ -1,7 +1,6 @@
 ﻿using Application.CQRS.Commands;
 using Application.CQRS.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EFProject.Controllers
@@ -39,11 +38,17 @@ namespace EFProject.Controllers
         public async Task<ActionResult<List<User>>> AddUser(User user)
         {
             var command = new AddUserCommand { User = user };
+            var validator = new AddUserCommandValidator();
+            var validationResult = await validator.ValidateAsync(command);
+            if(!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
             var users = await mediator.Send(command);
             return Ok(users);
         }
-
-        [HttpPut("{id}")]
+        
+    [HttpPut("{id}")]
         public async Task<ActionResult<List<User>>> UpdateUser(int id, User user)
         {
             var command = new UpdateUserCommand { UserId = id, Request = user };

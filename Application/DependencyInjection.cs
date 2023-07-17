@@ -35,6 +35,8 @@ namespace Application
         {
             services.AddMediatR(cfg =>
                     cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
         }
+
     }
 }

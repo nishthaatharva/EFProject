@@ -50,7 +50,7 @@ namespace EFProject.Services.UserService.Concrete
             var user = await _context.Users.FindAsync(id);
             if (user == null)
                 return null;
-
+            
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
             user.Email = request.Email;
