@@ -33,6 +33,11 @@ namespace EFProject.Services.UserService.Concrete
             throw new NotImplementedException();
         }
 
+        public Task<User> GetUserByEmailAndPassword(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<User?> GetUserById(int id)
         {
             throw new NotImplementedException();

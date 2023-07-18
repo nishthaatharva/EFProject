@@ -1,6 +1,7 @@
 ﻿using Application.CQRS.Commands;
 using Application.CQRS.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EFProject.Controllers
@@ -66,6 +67,18 @@ namespace EFProject.Controllers
                 return NotFound();
             }
             return Ok(users);
+        }
+
+        [HttpPost("login")]
+    
+        public async Task<IActionResult> Login(GenerateJwtTokenCommand command)
+        {
+            var token = await mediator.Send(command);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            return Ok(new { Token = token });
         }
 
 

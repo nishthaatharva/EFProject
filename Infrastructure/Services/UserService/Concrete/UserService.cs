@@ -14,6 +14,16 @@ namespace EFProject.Services.UserService.Concrete
         {
             _context = context;
         }
+
+        public async Task<User> GetUserByEmailAndPassword(string email, string password)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null || user.Password != password)
+            {
+                return null;
+            }
+            return user;
+        }
         public async Task<List<User>> AddUser(User user)
         {
             _context.Users.Add(user);
@@ -36,6 +46,8 @@ namespace EFProject.Services.UserService.Concrete
             var users = await _context.Users.ToListAsync();
             return users;
         }
+        
+        
 
         public async Task<User?> GetUserById(int id)
         {

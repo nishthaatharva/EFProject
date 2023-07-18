@@ -6,6 +6,7 @@ namespace EFProject.Services.RegisterService
     public class UserRegister : RegisterBase
     {
         public UserRegister(User user) : base(user) { 
+
         }
     }
 }

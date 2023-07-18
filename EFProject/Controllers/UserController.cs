@@ -1,6 +1,4 @@
-﻿using EFProject.Models;
-using EFProject.Services.UserService.Abstract;
-using Microsoft.AspNetCore.Http;
+﻿using EFProject.Services.UserService.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EFProject.Controllers

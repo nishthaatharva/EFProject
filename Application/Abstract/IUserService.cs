@@ -4,6 +4,7 @@ namespace EFProject.Services.UserService.Abstract
 {
     public interface IUserService
     {
+        Task<User> GetUserByEmailAndPassword(string email, string password);
         Task<List<User>> GetAllUsers();
         Task<User?> GetUserById(int id);
         Task<List<User>> AddUser(User user);
