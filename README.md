@@ -1,7 +1,7 @@
 # EFProject
 
 # Entity Framework
--Entity Framework is an Object/Relational Mapping (O/RM) framework. It is an enhancement to ADO.NET that gives developers an automated mechanism for accessing & storing the data in the database.
+- Entity Framework is an Object/Relational Mapping (O/RM) framework. It is an enhancement to ADO.NET that gives developers an automated mechanism for accessing & storing the data in the database.
 
 # Repository-service pattern
 - It provides data abstraction and 
@@ -13,8 +13,8 @@
 - The Repository Pattern is a layer that mediates between the domain and the data access layers. It's like a buffer that controls how data is accessed and manipulated.
 
 # Solid Principal:
--SOLID principles are particularly relevant for agile development, as they help create flexible, scalable, and easy to modify code. Readable, reusable, maintainable and scalable code
--SOLID is a mnemonic device for 5 design principles of object-oriented programs (OOP) that result in readable, adaptable, and scalable code. SOLID can be applied to any OOP program.
+- SOLID principles are particularly relevant for agile development, as they help create flexible, scalable, and easy to modify code. Readable, reusable, maintainable and scalable code
+- SOLID is a mnemonic device for 5 design principles of object-oriented programs (OOP) that result in readable, adaptable, and scalable code. SOLID can be applied to any OOP program.
 
 ## The 5 principles of SOLID are:	
 Single-responsibility principle
@@ -61,21 +61,21 @@ Application: Interfaces,CQRS ---- exception handling etc, custom exceptions(Midd
 - CQRS allows us to “break free” from these considerations, and give each system the equal design and consideration it deserves, without worrying about the impact of the other system. This has tremendous benefits on both performance and agility, especially if separate teams are working on these systems.
 
 # Mediator Pattern :	
--The Mediator pattern is simply defining an object that encapsulates how objects interact with each other. Instead of having two or more objects take a direct dependency on each other, they instead interact with a “mediator”, who is in charge of sending those interactions to the other party
--using mediatR pattern we can encapsulate object for interaction with each other.
+- The Mediator pattern is simply defining an object that encapsulates how objects interact with each other. Instead of having two or more objects take a direct dependency on each other, they instead interact with a “mediator”, who is in charge of sending those interactions to the other party
+- using mediatR pattern we can encapsulate object for interaction with each other.
 
 # Fluent Validation :
--The FluentValidation library allows us to easily define very rich custom validation for our classes. Since we are implementing CQRS, it makes the most sense to define validation for our Commands.
--We should not bother ourselves with defining validators for Queries, since they don’t contain any behavior. We use Queries only for fetching data from the application.
--Fluent Validation is a popular open-source validation library used to solve complex validation requirements. It is a third-party validation library for .NET that uses an easy-to-use fluent interface for building strongly typed validation rules. Used to solve complex validation requirements.
--It is a server-side framework used to create advanced and complex validations for the user data. It is a great tool to help make your validation easy to create and easy to maintain.
+- The FluentValidation library allows us to easily define very rich custom validation for our classes. Since we are implementing CQRS, it makes the most sense to define validation for our Commands.
+- We should not bother ourselves with defining validators for Queries, since they don’t contain any behavior. We use Queries only for fetching data from the application.
+- Fluent Validation is a popular open-source validation library used to solve complex validation requirements. It is a third-party validation library for .NET that uses an easy-to-use fluent interface for building strongly typed validation rules. Used to solve complex validation requirements.
+- It is a server-side framework used to create advanced and complex validations for the user data. It is a great tool to help make your validation easy to create and easy to maintain.
 
 ### I prefer Fluent Validation:
--It gives me far better control of my validation rules.
--Doing conditional validation on different properties is so much easier compared to Data Annotations.
--It separates the validation from my view models.
--Unit testing is far easier compared to Data Annotations.
--It has excellent client side validation support for most standard validation rules.	
+- It gives me far better control of my validation rules.
+- Doing conditional validation on different properties is so much easier compared to Data Annotations.
+- It separates the validation from my view models.
+- Unit testing is far easier compared to Data Annotations.
+- It has excellent client side validation support for most standard validation rules.	
 
 
 
