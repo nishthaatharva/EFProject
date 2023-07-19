@@ -67,7 +67,7 @@ Domain-Driven Design (DDD)
 - The Mediator pattern is simply defining an object that encapsulates how objects interact with each other. Instead of having two or more objects take a direct dependency on each other, they instead interact with a “mediator”, who is in charge of sending those interactions to the other party
 - using mediatR pattern we can encapsulate object for interaction with each other.
 
-# Fluent Validation :
+# Fluent Validation:
 - The FluentValidation library allows us to easily define very rich custom validation for our classes. Since we are implementing CQRS, it makes the most sense to define validation for our Commands.
 - We should not bother ourselves with defining validators for Queries, since they don’t contain any behavior. We use Queries only for fetching data from the application.
 - Fluent Validation is a popular open-source validation library used to solve complex validation requirements. It is a third-party validation library for .NET that uses an easy-to-use fluent interface for building strongly typed validation rules. Used to solve complex validation requirements.
@@ -78,7 +78,19 @@ Domain-Driven Design (DDD)
 - Doing conditional validation on different properties is so much easier compared to Data Annotations.
 - It separates the validation from my view models.
 - Unit testing is far easier compared to Data Annotations.
-- It has excellent client side validation support for most standard validation rules.	
+- It has excellent client side validation support for most standard validation rules.
+
+ # JWT :
+- JWT stands for **JSON Web Token** digitally signed using a secret key by a token provider. It helps the resource server to verify the token data using the same secret key.
+
+### JWT consists of three parts:
+ **1. Header**: encoded data of the token type and the algorithm used to sign the data.  
+ **2. Payload**: encoded data of claims intended to share.  
+ **3. Signature**: created by signing (encoded header + encoded payload) using a secret key.
+
+- **Authentication**: It is an open standard that allows transmitting data between parties as a JSON object in a secure and compact way. The data transmitted using JWT between parties are digitally signed so that it can be easily verified and trusted.
+
+- **Authorization**: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
 
 
 
