@@ -15,7 +15,7 @@ namespace Application.CQRS.Commands
     public GenerateJwtTokenCommandHandler(IUserService userService, IConfiguration configuration)
     {
         _userService = userService;
-        _configuration = configuration;
+        _configuration = configuration;           
     }
     public async Task<string> Handle(GenerateJwtTokenCommand request, CancellationToken cancellationToken)
     {
@@ -30,10 +30,13 @@ namespace Application.CQRS.Commands
         var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
+            Issuer = _configuration["Jwt:Issuer"],
+            Audience = _configuration["Jwt:Audience"],
             Subject = new ClaimsIdentity(new[]
             {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email)
+                    new Claim(ClaimTypes.Email, user.Email),
+                   
                 }),
             Expires = DateTime.UtcNow.AddHours(Convert.ToDouble(_configuration["Jwt:ExpirationHours"])),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -16,6 +16,7 @@ namespace EFProject.Controllers
             this.mediator = mediator;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<User>>> GetAllUsers()
         {
@@ -23,6 +24,8 @@ namespace EFProject.Controllers
             var users = await mediator.Send(query);
             return Ok(users);
         }
+
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(int id)
         {
@@ -35,6 +38,7 @@ namespace EFProject.Controllers
             return Ok(user);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<List<User>>> AddUser(User user)
         {
@@ -48,8 +52,8 @@ namespace EFProject.Controllers
             var users = await mediator.Send(command);
             return Ok(users);
         }
-        
-    [HttpPut("{id}")]
+       
+        [HttpPut("{id}")]
         public async Task<ActionResult<List<User>>> UpdateUser(int id, User user)
         {
             var command = new UpdateUserCommand { UserId = id, Request = user };
@@ -70,7 +74,7 @@ namespace EFProject.Controllers
         }
 
         [HttpPost("login")]
-    
+        [AllowAnonymous]
         public async Task<IActionResult> Login(GenerateJwtTokenCommand command)
         {
             var token = await mediator.Send(command);
