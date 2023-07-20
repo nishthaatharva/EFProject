@@ -55,7 +55,7 @@ Domain-Driven Design (DDD)
 - If we think about the commonly used CRUD pattern (Create-Read-Update-Delete), usually we have the user interface interacting with a datastore responsible for all four operations. CQRS would instead have us split these operations into two models, one for the queries (aka “R”), and another for the commands (aka “CUD”)
 - It helps to differentiate CRUD operations
 
-### Command :
+### Command:
 - “Add a New Product”: this scenario is a command operation because it’ll make a change to the system. manipulate data, repository can be used.
 
 ### What problem is this trying to solve?
@@ -63,7 +63,7 @@ Domain-Driven Design (DDD)
 - Neither approach is wrong. But the issue is that it’s a constant balancing act between reads and writes, and eventually one side will “win out”. All further development means both sides need to be analyzed and often one is compromised.
 - CQRS allows us to “break free” from these considerations, and give each system the equal design and consideration it deserves, without worrying about the impact of the other system. This has tremendous benefits on both performance and agility, especially if separate teams are working on these systems.
 
-# Mediator Pattern :	
+# Mediator Pattern:	
 - The Mediator pattern is simply defining an object that encapsulates how objects interact with each other. Instead of having two or more objects take a direct dependency on each other, they instead interact with a “mediator”, who is in charge of sending those interactions to the other party
 - using mediatR pattern we can encapsulate object for interaction with each other.
 
@@ -80,7 +80,7 @@ Domain-Driven Design (DDD)
 - Unit testing is far easier compared to Data Annotations.
 - It has excellent client side validation support for most standard validation rules.
 
- # JWT :
+ # JWT:
 - JWT stands for **JSON Web Token** digitally signed using a secret key by a token provider. It helps the resource server to verify the token data using the same secret key.
 
 ### JWT consists of three parts:
@@ -93,6 +93,21 @@ Domain-Driven Design (DDD)
 
 - **Authorization**: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
 - **app.useAuthorization** middleware will decide if the user can access the endpoints, app.useAuthorization & [Authorize] has a default policy that user has to be authenticated, so we don't need to do anything else.
+
+# Global exception handling:
+- Global exception handling with custom middleware grants the developer much broader authority and enhances the procedure. It’s a block of code that can be added to the ASP.NET Core pipeline as middleware and holds our custom error handling mechanism. This pipeline is capable of catching a wide range of exceptions.
+- This approach aims to ensure your ASP.NET Core API produces consistent responses regardless of the type of request. It makes things simpler for anybody who uses your API to do their job. It also provides a better development experience.
+
+### Disadvantage of try catch block:
+- try-catch-finally blocks are not used to handle unhandled exceptions.
+- Increase in code size.
+- Duplication of code.
+
+### Advantage of exception handling:
+- Preventing crashes.
+- Improving reliability.
+- Providing user-friendly error messages
+- Debugging
 
 
 
