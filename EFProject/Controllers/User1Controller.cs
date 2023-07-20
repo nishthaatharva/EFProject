@@ -21,10 +21,11 @@ namespace EFProject.Controllers
         public async Task<ActionResult<List<User>>> GetAllUsers()
         {
             var query = new GetAllUserQuery();
-            var users = await mediator.Send(query);
+            var users = await mediator.Send(query);           
+           
             return Ok(users);
         }
-
+        
         [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(int id)
@@ -52,7 +53,7 @@ namespace EFProject.Controllers
             var users = await mediator.Send(command);
             return Ok(users);
         }
-       
+        
         [HttpPut("{id}")]
         public async Task<ActionResult<List<User>>> UpdateUser(int id, User user)
         {
@@ -61,15 +62,17 @@ namespace EFProject.Controllers
             return Ok(users);
         }
 
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<User>>> DeleteUser(int id)
         {
             var command = new DeleteUserCommand { UserId = id };
             var users = await mediator.Send(command);
+
             if (users == null)
             {
                 return NotFound();
-            }
+            }            
             return Ok(users);
         }
 
@@ -80,11 +83,11 @@ namespace EFProject.Controllers
             var token = await mediator.Send(command);
             if (token == null)
             {
-                return Unauthorized();
+                // return Unauthorized();
+                throw new ApplicationException("You are not authorized");
             }
             return Ok(new { Token = token });
         }
-
 
     }
 }

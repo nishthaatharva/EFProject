@@ -1,4 +1,5 @@
-﻿using EFProject.Data;
+﻿using Domain.Models;
+using EFProject.Data;
 using EFProject.Models;
 using EFProject.Services.UserService.Abstract;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,14 @@ namespace EFProject.Services.UserService.Concrete
             _context = context;
         }
 
+        public async Task<User?> GetUserByRole(int role)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserRoleId == role);
+            if (user == null)
+                return null;
+            return user;
+        }
+
         public async Task<User> GetUserByEmailAndPassword(string email, string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
@@ -24,6 +33,7 @@ namespace EFProject.Services.UserService.Concrete
             }
             return user;
         }
+
         public async Task<List<User>> AddUser(User user)
         {
             _context.Users.Add(user);
@@ -70,6 +80,7 @@ namespace EFProject.Services.UserService.Concrete
             user.ContactNo = request.ContactNo;
             user.City = request.City;
             user.Gender = request.Gender;
+            user.UserRoleId = request.UserRoleId;
 
             await _context.SaveChangesAsync();
             return await _context.Users.ToListAsync();

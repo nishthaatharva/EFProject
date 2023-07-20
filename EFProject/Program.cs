@@ -1,5 +1,6 @@
 global using EFProject.Models;
 using Application;
+using Application.CustomMiddleware;
 using Infrastructure;
 using Microsoft.OpenApi.Models;
 
@@ -61,7 +62,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
 
 app.Run();

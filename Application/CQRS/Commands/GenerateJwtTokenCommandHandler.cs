@@ -16,16 +16,23 @@ namespace Application.CQRS.Commands
     {
         _userService = userService;
         _configuration = configuration;           
-    }
+    }        
     public async Task<string> Handle(GenerateJwtTokenCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userService.GetUserByEmailAndPassword(request.Email, request.Password);
-        if (user == null)
-        {
-            // User not found or invalid credentials
-            return null;
-        }
-        // Generate JWT token
+            //var user1 = await _userService.GetUserByRole(request.Role);
+            //if (user1 == null)
+            //{
+            //    // User not found or invalid credentials
+            //    return null;
+            //}
+
+            var user = await _userService.GetUserByEmailAndPassword(request.Email, request.Password);
+            if (user == null)
+            {
+                // User not found or invalid credentials
+                return null;
+            }
+            // Generate JWT token
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
         var tokenDescriptor = new SecurityTokenDescriptor
@@ -36,7 +43,8 @@ namespace Application.CQRS.Commands
             {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Email, user.Email),
-                   
+                    new Claim(ClaimTypes.Role, user.UserRoleId.ToString())
+
                 }),
             Expires = DateTime.UtcNow.AddHours(Convert.ToDouble(_configuration["Jwt:ExpirationHours"])),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -1,4 +1,5 @@
-﻿using EFProject.Models;
+﻿using Domain.Models;
+using EFProject.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,11 +19,11 @@ namespace EFProject.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            //optionsBuilder.UseSqlServer("Server=NISHATHA-MISTRY;Database=EF;Trusted_Connection=true;TrustServerCertificate=true;");         
+            //optionsBuilder.UseSqlServer("Server=NISHATHA-MISTRY;Database=EF;Trusted_Connection=true;TrustServerCertificate=true;");           
         }
 
         
         public DbSet<User> Users { get; set; }
-
+        public DbSet<UserRole> UserRoles { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace EFProject.Services.UserService.Concrete
         {
             throw new NotImplementedException();
         }
-
+        
         public Task<List<User>?> DeleteUser(int id)
         {
             throw new NotImplementedException();
@@ -38,7 +38,22 @@ namespace EFProject.Services.UserService.Concrete
             throw new NotImplementedException();
         }
 
+        //public Task<User> GetUserByEmailAndPassword(string email, string password)
+        //{
+        //    throw new NotImplementedException();
+        //}        
+
+        public Task<User> GetUserByEmailAndPasswordWithRole(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<User?> GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> GetUserByRole(int role)
         {
             throw new NotImplementedException();
         }
