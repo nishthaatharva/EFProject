@@ -89,8 +89,11 @@ Domain-Driven Design (DDD)
  **3. Signature**: created by signing (encoded header + encoded payload) using a secret key.
 
 - **Authentication**: It is an open standard that allows transmitting data between parties as a JSON object in a secure and compact way. The data transmitted using JWT between parties are digitally signed so that it can be easily verified and trusted.
+- **app.useAuthentication** is a middleware that finds correct authentication handler scheme in our case it is JWTBearer handler, after validations and claims are done, it tries to resolve identity of user.
 
 - **Authorization**: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
+- **app.useAuthorization** middleware will decide if the user can access the endpoints, app.useAuthorization & [Authorize] has a default policy that user has to be authenticated, so we don't need to do anything else.
+
 
 
 
