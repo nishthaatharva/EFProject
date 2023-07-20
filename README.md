@@ -19,7 +19,7 @@
 - SOLID principles are particularly relevant for agile development, as they help create flexible, scalable, and easy to modify code. Readable, reusable, maintainable and scalable code
 - SOLID is a mnemonic device for 5 design principles of object-oriented programs (OOP) that result in readable, adaptable, and scalable code. SOLID can be applied to any OOP program.
 
-## The 5 principles of SOLID are:	
+### The 5 principles of SOLID are:	
 - Single-responsibility principle
 - Open-closed principle
 - Liskov substitution principle
@@ -39,7 +39,7 @@
 - Clean architecture is a software architecture that helps us to keep an entire application code under control. The main goal of clean architecture is the code/logic, which is unlikely to change. It has to be written without any direct dependency. This means that if I want to change my development framework OR User Interface (UI) of the system, the core of the system should not be changed. It also means that our external dependencies are completely replaceable.
 Domain-Driven Design (DDD)
 
-## Benefits of Clean Architecture:
+### Benefits of Clean Architecture:
 - Independent of Database and Frameworks.
 - Independent of the presentation layer. Anytime we can change the UI without changing the rest of the system and business logic.
 - Highly testable, especially the core domain model and its business rules are extremely testable.
@@ -55,7 +55,7 @@ Domain-Driven Design (DDD)
 - If we think about the commonly used CRUD pattern (Create-Read-Update-Delete), usually we have the user interface interacting with a datastore responsible for all four operations. CQRS would instead have us split these operations into two models, one for the queries (aka “R”), and another for the commands (aka “CUD”)
 - It helps to differentiate CRUD operations
 
-## Command :
+### Command :
 - “Add a New Product”: this scenario is a command operation because it’ll make a change to the system. manipulate data, repository can be used.
 
 ### What problem is this trying to solve?
