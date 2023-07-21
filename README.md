@@ -94,6 +94,14 @@ Domain-Driven Design (DDD)
 - **Authorization**: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token.
 - **app.useAuthorization** middleware will decide if the user can access the endpoints, app.useAuthorization & [Authorize] has a default policy that user has to be authenticated, so we don't need to do anything else.
 
+### Permission-Based Authorization:
+- Let’s go with a mechanism that is finer than the Role-Based Authorization. We will introduce permissions at the role level so that only specific roles get to access protected resources. We will be using RoleClaims to set the permissions of roles. ASP.NET Core has some cool features to implement this easily.
+
+**Here are few advantages of taking this approach:**
+- Roles are no longer static to the code. It can be easily modified/added/deleted at runtime.
+- The Permissions set to each role also can be modified easily at runtime.
+- More Control on Authorization.
+
 # Global exception handling:
 - Global exception handling with custom middleware grants the developer much broader authority and enhances the procedure. It’s a block of code that can be added to the ASP.NET Core pipeline as middleware and holds our custom error handling mechanism. This pipeline is capable of catching a wide range of exceptions.
 - This approach aims to ensure your ASP.NET Core API produces consistent responses regardless of the type of request. It makes things simpler for anybody who uses your API to do their job. It also provides a better development experience.
