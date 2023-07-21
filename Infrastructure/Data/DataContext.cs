@@ -21,9 +21,9 @@ namespace EFProject.Data
             base.OnConfiguring(optionsBuilder);
             //optionsBuilder.UseSqlServer("Server=NISHATHA-MISTRY;Database=EF;Trusted_Connection=true;TrustServerCertificate=true;");           
         }
-
         
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<Permissions> Permissions { get; set; }
     }
 }

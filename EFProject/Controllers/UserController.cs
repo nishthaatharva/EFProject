@@ -34,7 +34,7 @@ namespace EFProject.Controllers
             var result = await _userService.AddUser(user);
             
             return Ok(result);
-        }
+        }       
 
         [HttpPut("{id}")]
         public async Task<ActionResult<List<User>>> UpdateUser(int id,User request)

@@ -80,14 +80,9 @@ namespace EFProject.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(GenerateJwtTokenCommand command)
         {
-            var token = await mediator.Send(command);
-            if (token == null)
-            {
-                // return Unauthorized();
-                throw new ApplicationException("You are not authorized");
-            }
+            var token = await mediator.Send(command) ?? throw new ApplicationException("You are not authorized");
             return Ok(new { Token = token });
         }
-
+        
     }
 }
