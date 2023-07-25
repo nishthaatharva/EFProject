@@ -15,7 +15,7 @@ namespace EFProject.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-
+     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -24,6 +24,6 @@ namespace EFProject.Data
         
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<Permissions> Permissions { get; set; }
+        public DbSet<Permissions> Permissions { get; set; }        
     }
 }

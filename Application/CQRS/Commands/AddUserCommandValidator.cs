@@ -26,13 +26,7 @@ namespace Application.CQRS.Commands
                 .NotEmpty()
                 .WithMessage("Email is required.")
                 .EmailAddress()
-                .WithMessage("Invalid email format.");
-
-            RuleFor(command => command.User.Password)
-                .NotEmpty()
-                .WithMessage("Password is required.")
-                .MaximumLength(6)
-                .WithMessage("Password must be atleast 6 characters long.");
+                .WithMessage("Invalid email format.");           
 
             RuleFor(command => command.User.ContactNo)
                 .NotEmpty()

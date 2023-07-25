@@ -1,7 +1,9 @@
 global using EFProject.Models;
 using Application;
 using Application.CustomMiddleware;
+using EFProject.Data;
 using Infrastructure;
+using Infrastructure.Permission;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddApplication(builder.Configuration);
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration );
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -48,6 +50,9 @@ builder.Services.AddSwaggerGen(c =>
 
 });
 
+
+
+
 //builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
@@ -60,9 +65,19 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+SeedDatabase();
 
 app.UseAuthorization();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
-
 app.Run();
+    void SeedDatabase()
+{    
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<DataContext>();
+        // Seed initial roles and permissions
+        SeedData.Initialize(context).Wait();
+    }
+}

@@ -44,7 +44,7 @@ namespace Application.CQRS.Commands
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, user.UserRoleId.ToString())
+                    new Claim(ClaimTypes.Role, user.UserRoleId.ToString()),                  
                 }),
                 Expires = DateTime.UtcNow.AddHours(Convert.ToDouble(_configuration["Jwt:ExpirationHours"])),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

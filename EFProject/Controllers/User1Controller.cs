@@ -38,8 +38,9 @@ namespace EFProject.Controllers
             }
             return Ok(user);
         }
+        
 
-        [Authorize]
+        [Authorize(Policy ="HasPermission:AddUser")]
         [HttpPost]
         public async Task<ActionResult<List<User>>> AddUser(User user)
         {
@@ -53,7 +54,7 @@ namespace EFProject.Controllers
             var users = await mediator.Send(command);
             return Ok(users);
         }
-        
+       
         [HttpPut("{id}")]
         public async Task<ActionResult<List<User>>> UpdateUser(int id, User user)
         {

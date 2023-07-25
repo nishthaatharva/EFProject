@@ -14,11 +14,11 @@ namespace Infrastructure.Permission
             else
             {
                 // Check if the user has the required permission
-                if (context.User.Claims.Any(c => c.Type == "Permission" && c.Value == requirement.PermissionName))
+                if (context.User.Claims.Any(c => c.Type == "HasPermission" && c.Value == requirement.PermissionName))
                 {
                     context.Succeed(requirement);
-                }               
-            }
+                } 
+            }            
             return Task.CompletedTask;               
         }          
     }   
