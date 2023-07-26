@@ -49,10 +49,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 
 });
-
-
-
-
 //builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();

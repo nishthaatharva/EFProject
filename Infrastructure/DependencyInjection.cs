@@ -1,6 +1,7 @@
 ﻿using EFProject.Data;
 using EFProject.Services.UserService.Abstract;
 using EFProject.Services.UserService.Concrete;
+using Infrastructure.Identity.Models;
 using Infrastructure.Permission;
 using Infrastructure.Services.PermissionService;
 using Microsoft.AspNetCore.Authorization;
@@ -19,6 +20,11 @@ namespace Infrastructure
                 options.UseSqlServer(configuration.GetConnectionString("SqlConnection"));
             }
             );
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("SqlConnection"));
+            });
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPermissionService, PermissionService>();

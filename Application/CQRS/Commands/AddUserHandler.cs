@@ -16,7 +16,6 @@ namespace Application.CQRS.Commands
         public async Task<List<User>> Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
             return await _userService.AddUser(request.User);
-        }
-
+        }       
     }
 }
