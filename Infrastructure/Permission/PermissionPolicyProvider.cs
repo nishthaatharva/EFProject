@@ -13,7 +13,7 @@ namespace Infrastructure.Permission
         public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => FallbackPolicyProvider.GetDefaultPolicyAsync();
         public Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {
-            if (policyName.StartsWith("HasPermission", StringComparison.OrdinalIgnoreCase))
+            if (policyName.StartsWith("Permissions", StringComparison.OrdinalIgnoreCase))
             {
                 var policy = new AuthorizationPolicyBuilder();
                 policy.AddRequirements(new HasPermissionRequirement(policyName));

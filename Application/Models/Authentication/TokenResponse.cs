@@ -1,10 +1,11 @@
-﻿namespace Infrastructure.Identity.Models.Authentication
+﻿namespace Application.Models.Authentication
 {
     public class TokenResponse
     {
         public TokenResponse(ApplicationUser user,
-                            string role,
-                            string token) {
+                           string role,
+                           string token)
+        {
             Id = user.Id;
             FullName = user.FullName;
             EmailAddress = user.Email;

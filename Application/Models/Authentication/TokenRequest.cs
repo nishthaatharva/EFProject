@@ -1,16 +1,16 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Identity.Models.Authentication
+namespace Application.Models.Authentication
 {
     public class TokenRequest
     {
         [Required]
         [JsonProperty("username")]
-        public string ? Username { get; set; }
+        public string? Username { get; set; }
 
         [Required]
         [JsonProperty("password")]
-        public string ? Password { get; set; }
+        public string? Password { get; set; }
     }
 }

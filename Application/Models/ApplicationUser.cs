@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Runtime.Serialization;
 
-namespace Infrastructure.Identity.Models
+namespace Application.Models
 {
     public class ApplicationUser : IdentityUser
     {

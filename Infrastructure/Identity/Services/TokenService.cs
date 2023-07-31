@@ -1,5 +1,6 @@
-﻿using Infrastructure.Identity.Models;
-using Infrastructure.Identity.Models.Authentication;
+﻿using Application.Abstract;
+using Application.Models;
+using Application.Models.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -36,8 +37,12 @@ namespace Infrastructure.Identity.Services
                 ApplicationUser user = await GetUserByEmail(request.Username);
 
                 if (user != null && user.IsEnabled)
-                {
+                {           
                     string role = (await _userManager.GetRolesAsync(user))[0];
+                    //if (role == null)
+                    //{
+                    //    await _userManager.AddToRoleAsync(user, "Member");
+                    //}
                     string jwtToken = await GenerateJwtToken(user);
                     await _userManager.UpdateAsync(user);
 

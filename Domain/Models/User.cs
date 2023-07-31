@@ -1,6 +1,4 @@
-﻿using Domain.Models;
-
-namespace EFProject.Models
+﻿namespace EFProject.Models
 {
     public class User
     {
