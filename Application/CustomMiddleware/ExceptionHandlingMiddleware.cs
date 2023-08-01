@@ -44,14 +44,14 @@ namespace Application.CustomMiddleware
                     if (ex.Message.Contains("Invalid Token"))
                     {
                         response.StatusCode = (int)HttpStatusCode.Forbidden;
-                        errorResponse.Message = ex.Message;                        
+                        errorResponse.Message = ex.Message;
                     }
                     else if (ex.Message.Contains("You are not authorized"))
                     {
                         response.StatusCode = (int)HttpStatusCode.Unauthorized;
                         errorResponse.Message = ex.Message;
                     }
-                    else if(ex.Message.Contains("Not found"))
+                    else if (ex.Message.Contains("Not found"))
                     {
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         errorResponse.Message = ex.Message;
@@ -60,7 +60,7 @@ namespace Application.CustomMiddleware
                     response.StatusCode = (int)HttpStatusCode.BadRequest;
                     errorResponse.Message = ex.Message;
                     break;
-              
+
                 default:
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     errorResponse.Message = "Internal server error!";

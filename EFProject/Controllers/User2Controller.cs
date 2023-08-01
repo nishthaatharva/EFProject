@@ -20,11 +20,10 @@ namespace EFProject.Controllers
         [HttpPost]
         public async Task<ActionResult<ApplicationUser>> AddUser(ApplicationUser user)
         {
-           var command = new AddUser1Command { User = user };
+            var command = new AddUser1Command { User = user };
             var users = await mediator.Send(command);
             return Ok(users);
         }
-
-       
+              
     }
 }

@@ -5,7 +5,6 @@ namespace Application.CQRS.Commands
 {
     public class AddUserCommand : IRequest<List<User>>
     {      
-        public User User { get; set; }
-        
+        public User User { get; set; }        
     }
 }

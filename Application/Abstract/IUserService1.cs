@@ -14,7 +14,7 @@ namespace Application.Abstract
         //Task<List<ApplicationUser>> GetAllUsers();
         //Task<ApplicationUser?> GetUserById(int id);
         //Task<List<ApplicationUser>> AddUser(ApplicationUser user);
-        //Task<List<ApplicationUser>?> UpdateUser(int id, ApplicationUser request);
+        Task<List<ApplicationUser>?> UpdateUser(int id, ApplicationUser request);
         //Task<List<ApplicationUser>?> DeleteUser(int id);
         Task<ApplicationUser> AddUser(ApplicationUser user);
     }

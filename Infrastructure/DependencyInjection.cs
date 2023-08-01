@@ -1,6 +1,5 @@
 ﻿using Application.Abstract;
 using Application.Models;
-using Application.Models.Authentication;
 using EFProject.Data;
 using EFProject.Services.UserService.Abstract;
 using EFProject.Services.UserService.Concrete;
@@ -9,18 +8,14 @@ using Infrastructure.Identity.Seed;
 using Infrastructure.Identity.Services;
 using Infrastructure.Permission;
 using Infrastructure.Services.PermissionService;
+using Infrastructure.Services.RoleService;
 using Infrastructure.Services.UserService.Concrete;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
-using System.Security.Claims;
-using System.Text;
 
 namespace Infrastructure
 {
@@ -108,6 +103,7 @@ namespace Infrastructure
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserService1, UserService1>();
+            services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
             // services.AddSingleton<IAuthorizationRequirement, HasPermissionRequirement>();

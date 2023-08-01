@@ -2,6 +2,7 @@
 using Application.Models;
 using Infrastructure.Identity.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Infrastructure.Services.UserService.Concrete
@@ -30,12 +31,11 @@ namespace Infrastructure.Services.UserService.Concrete
                 PasswordHash = user.PasswordHash
             };
 
-
             // Create the user using UserManager
             await _userManager.CreateAsync(appUser, appUser.PasswordHash);
 
             // Add the claim to the user
-          //  await _userManager.AddClaimAsync(appUser, new Claim("Permissions", "Permissions:AddUser"));
+            await _userManager.AddClaimAsync(appUser, new Claim("Permissions", "Permissions:AddUser"));
 
             // Add the user to the "Member" role
             await _userManager.AddToRoleAsync(appUser, "Member");
@@ -59,10 +59,52 @@ namespace Infrastructure.Services.UserService.Concrete
             throw new NotImplementedException();
             //return   _context.UserClaims.Where(x => x.UserId == id)
         }
-
-        public Task<List<ApplicationUser>?> UpdateUser(int id, ApplicationUser request)
+    
+        public async Task<List<ApplicationUser>?> UpdateUser(int id, ApplicationUser request)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+                return null;
+
+            user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
+            user.PasswordHash = request.PasswordHash;
+            user.Email = request.Email;
+            user.UserName = request.Email;
+
+            //await _userManager.UpdateAsync(user);
+            await _userManager.CreateAsync(user, user.PasswordHash);
+
+            await _userManager.AddToRoleAsync(user, "Member");
+
+            await _userManager.AddClaimAsync(user, new Claim("Permissions", "Permissions:AddUser"));
+
+            await _context.SaveChangesAsync();
+            return await _context.Users.ToListAsync();
+
         }
+
+        //public async Task<List<ApplicationUser>?> UpdateUser(int id, ApplicationUser request)
+        //{
+        //    // throw new NotImplementedException();
+
+        //    var user = await _context.Users.FindAsync(id);
+        //    if (user == null)
+        //        return null;
+
+        //    user.FirstName = request.FirstName;
+        //    user.LastName = request.LastName;
+        //    user.PasswordHash = request.PasswordHash;
+        //    user.Email = request.Email;
+        //    user.UserName = request.Email;
+
+        //    await _userManager.UpdateAsync(user);
+
+        //    await _userManager.AddToRoleAsync(user, "Member");
+
+        //    await _context.SaveChangesAsync();
+        //    //return user;
+
+        //}
     }
 }
